@@ -14,7 +14,6 @@ while True:
         break
     except:
         print('Digite um número inteiro válido!')
- 
 
 
 """
@@ -27,9 +26,9 @@ while True:
         hint = int(input('Digite a Hora atual: '))
         if hint in range(0, 12):
             print('Bom dia')
-        if hint in range(12, 18):
+        elif hint in range(12, 18):
             print('Boa tarde')
-        if hint in range(18, 24):
+        elif hint in range(18, 24):
             print('Boa noite')
         break
     except:
@@ -43,9 +42,13 @@ menos escreva "Seu nome é curto"; se tiver entre 5 e 6 letras, escreva
 """
 
 sname = str(input('Digite seu nome: '))
-if len(sname) <= 4:
+tamanho_nome = len(sname)
+
+if tamanho_nome <= 4 and tamanho_nome > 0:
     print('Seu nome é curto')
-if len(sname) in range(5, 7):
+elif tamanho_nome in range(5, 7):
     print('Seu nome é normal')
-if len(sname) > 6:
+elif tamanho_nome > 6:
     print('Seu nome é muito grande')
+else:
+    print('Digite um nome valido')
