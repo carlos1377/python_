@@ -1,6 +1,6 @@
 import os
 
-SECRET = 'abelha'
+SECRET = 'juliano'
 
 letras_acertadas = ''
 word_sct = '*' * len(SECRET)
