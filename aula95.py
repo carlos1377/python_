@@ -1,7 +1,7 @@
 # try, except, else e finally
 try:
     print('arquivo aberto')
-    # 8/0
+    8/0
 except ZeroDivisionError as error:
     print('dividiu por zero')
     print(f'{error.__class__.__name__=}, {error}')
