@@ -22,5 +22,5 @@ print(next(gen))
 print(next(gen))
 
 
-# for n in gen:
-#     print(n)
+for n in gen:
+    print(n)
