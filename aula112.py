@@ -1,3 +1,4 @@
+# filter é um filtro funcional
 def print_iter(iterator):
     print(*list(iterator), sep='\n')
     print()
@@ -11,19 +12,22 @@ produtos = [
     {'nome': 'Produto 4', 'preco': 69.90},
 ]
 
-novos_produtos = [
-    p for p in produtos if p['preco'] > 10
-]
-
 
 def filtrar_preco(produto):
+
     return produto['preco'] > 100
 
 
+# novos_produtos = [
+#     p for p in produtos
+#     if p['preco'] > 100
+# ]
+
 novos_produtos = filter(
-    # lambda p: p['preco'] > 100,
-    filtrar_preco,
+    lambda p: p['preco'] > 100,
+    # filtrar_preco,
     produtos
 )
+
 
 print_iter(novos_produtos)

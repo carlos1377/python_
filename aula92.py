@@ -18,6 +18,9 @@ def generator(n=0, maximum=10):
 
 
 gen = generator(maximum=1000000)
+print(next(gen))
+print(next(gen))
 
-for n in gen:
-    print(n)
+
+# for n in gen:
+#     print(n)
