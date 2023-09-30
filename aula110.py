@@ -13,15 +13,20 @@ alunos = [
     {'nome': 'Anderson', 'nota': 'C'},
 ]
 
+
+def ordena(aluno):
+    return aluno['nota']
+
 # alunos = ['a', 'b', 'c']
 # grupos = groupby(alunos)
 
 # for chave, grupo in grupos:
 #     print(chave)
 
-alunos_agrupados = sorted(alunos, key=lambda a: a['nota'])  # ordenar by nota
 
-grupos = groupby(alunos_agrupados, key=lambda a: a['nota'])
+alunos_agrupados = sorted(alunos, key=ordena)  # ordenar by nota
+
+grupos = groupby(alunos_agrupados, key=ordena)
 
 for chave, grupo in grupos:
     print(chave)
