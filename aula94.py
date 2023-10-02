@@ -3,7 +3,7 @@ a = 18
 b = 0
 
 try:
-    # b[0]
+    b[0]
     c = a / b
     print('ababa')
 except ZeroDivisionError as e:
