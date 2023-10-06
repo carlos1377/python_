@@ -1,1 +1,7 @@
 Success: OK, deu tudo certo LogFileMixin
+Error: something LogFileMixin
+Success: OK, deu tudo certo LogFileMixin
+Error: something LogFileMixin
+Success: OK, deu tudo certo LogFileMixin
+Error: something LogFileMixin
+Success: OK, deu tudo certo LogFileMixin
