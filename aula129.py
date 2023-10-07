@@ -6,10 +6,10 @@
 
 class Classe:
     @staticmethod
-    def funcao_que_esta_na_classe():
-        print('oir')
+    def funcao_que_esta_na_classe(*args, **kwargs):
+        print('oir', args, kwargs)
 
 
 c1 = Classe()
-c1.funcao_que_esta_na_classe()
-Classe.funcao_que_esta_na_classe()
+c1.funcao_que_esta_na_classe(1, 2, 3)
+Classe.funcao_que_esta_na_classe(nomeado=121)
