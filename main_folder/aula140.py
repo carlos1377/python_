@@ -28,22 +28,40 @@
 # Ou o atributo __mro__ (Dunder - Double Underscore)
 
 class A:
-    def __init__(self, atributo):
-        self.atributo = atributo
+    # def __init__(self, atributo):
+    #     self.atributo = atributo
+
+    def quem_sou(self):
+        print('A')
 
 
 class B(A):
-    def __init__(self, atributo, atributoB):
-        super().__init__(atributo)
-        self.atributoB = atributoB
+    # def __init__(self, atributo, atributoB):
+    #     super().__init__(atributo)
+    #     self.atributoB = atributoB
+
+    def quem_sou(self):
+        print('B')
 
 
 class C(A):
-    def __init__(self, atributo, atributoC):
-        super().__init__(atributo)
-        self.atributoC = atributoC
+    # def __init__(self, atributo, atributoC):
+    #     super().__init__(atributo)
+    #     self.atributoC = atributoC
+
+    def quem_sou(self):
+        print('C')
 
 
 class D(B, C):
-    def __init__(self, atributo, atributoB):
-        super().__init__(atributo, atributoB)
+    # def __init__(self, atributo, atributoB):
+    #     super().__init__(atributo, atributoB)
+
+    def quem_sou(self):
+        print('D')
+
+
+d = D()
+d.quem_sou()
+
+print(D.mro()) # ordem de resolução de metodos
