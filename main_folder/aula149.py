@@ -19,6 +19,7 @@
 # with open('aula149.txt', 'w') as arquivo:
 #     ...
 
+
 class MyContextManager:
     def __init__(self, path_file, mode):
         self.path_file = path_file
@@ -34,7 +35,15 @@ class MyContextManager:
         print('closing file')
         self._file.close()
 
+        # raise class_exception('my message')
+        exception_.add_note('deu erro amigao')
+
+        # print(class_exception)
+        # print(exception_)
+        # print(traceback_)
+        # return True  # se o exit retornar True, entende que o erro foi tratado
+
 
 with MyContextManager('aula149.txt', 'w') as file:
-    file.write('linhaaaaa funciono')
+    file.write('linhaaaaa funciono', 111)
     print('with', file)
