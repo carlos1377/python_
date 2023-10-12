@@ -1,7 +1,19 @@
 {
+    "editor.formatOnSave": true,
+    "editor.rulers":[80,120],
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
     },
-    "python.formatting.provider": "autopep8",
-    "python.analysis.typeCheckingMode": "off"
+    "python.languageServer": "Pylance",
+    "python.formatting.autopep8Args":[
+        "--indent-size=4",
+        "--max-line-length=80"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "python.analysis.typeCheckingMode": "basic",
+    "cSpell.enabled": false
 }

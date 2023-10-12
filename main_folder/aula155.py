@@ -34,6 +34,9 @@
 # print(type(f))
 # print(type(Foo))
 
+from typing import Any
+
+
 def meu_repr(self):
     return f'{type(self).__name__}({self.__dict__})'
 
@@ -50,9 +53,17 @@ class Meta(type):
 
         return cls
 
+    def __call__(cls, *args, **kwargs):
+        instance = super().__call__(*args, **kwargs)
+
+        if 'nome' not in instance.__dict__:
+            raise NotImplementedError('Crie o attr nome')
+
+        return instance
+
 
 class Pessoa(object, metaclass=Meta):
-    falar = 123
+    falar_ = 123
 
     def __new__(cls, *args, **kwargs):
         print('new')
