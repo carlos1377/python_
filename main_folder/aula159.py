@@ -5,8 +5,21 @@
 # Em resumo: dataclasses são syntax sugar para criar classes normais.
 # Foi descrito na PEP 557 e adicionado na versão 3.7 do Python.
 # doc: https://docs.python.org/3/library/dataclasses.html
-from dataclasses import dataclass, asdict, astuple
+from dataclasses import dataclass, asdict, astuple, field, fields
 
+
+@dataclass
+class Pessoa:
+    nome: str = field(default='missing', repr=False)
+    sobrenome: str = 'not sent'
+    idade: int = 000
+    enderecos: list[str] = field(default_factory=list)
+
+
+if __name__ == '__main__':
+    p1 = Pessoa()
+    # print(fields(p1))
+    print(p1)
 
 # @dataclass(init=False)  # desabilita o init padrao da dataclass
 # class Pessoa:
@@ -42,17 +55,17 @@ from dataclasses import dataclass, asdict, astuple
 
 # init, frozen, repr, order
 
-@dataclass(frozen=True, repr=True, order=False)
-class Pessoa:
-    nome: str
-    sobrenome: str
+# @dataclass(frozen=True, repr=True, order=False)
+# class Pessoa:
+#     nome: str
+#     sobrenome: str
 
 
-if __name__ == '__main__':
-    p1 = Pessoa('carlos', 'orso')
-    lista = [Pessoa('A', 'Z'), Pessoa('B', 'Y'), Pessoa('C', 'X')]
-    ordenadas = sorted(lista, reverse=True, key=lambda p: p.sobrenome)
-    # print(ordenadas)
-    # print(p1)
-    print(astuple(p1))
-    print(asdict(p1))
+# if __name__ == '__main__':
+#     p1 = Pessoa('carlos', 'orso')
+#     lista = [Pessoa('A', 'Z'), Pessoa('B', 'Y'), Pessoa('C', 'X')]
+#     ordenadas = sorted(lista, reverse=True, key=lambda p: p.sobrenome)
+#     # print(ordenadas)
+#     # print(p1)
+#     print(astuple(p1))
+#     print(asdict(p1))
