@@ -55,5 +55,61 @@ with connection:
         print(sql)
     connection.commit()
 
+    with connection.cursor() as cursor:
+        sql = (
+            f'INSERT INTO {TABLE_NAME} '
+            '(nome, idade) VALUES (%(name)s, %(age)s) '
+        )
+        data3 = (
+            {"name": "sophia", "age": 14, },
+            {"name": "manu", "age": 15, },
+            {"name": "carlinhos", "age": 16, },
+        )
+        cursor.executemany(sql, data3)
+        print(sql)
+    connection.commit()
+
+    with connection.cursor() as cursor:
+        sql = (
+            f'INSERT INTO {TABLE_NAME} '
+            '(nome, idade) VALUES (%s, %s) '
+        )
+        data4 = (
+            ("dudu", 14, ),
+            ("malu", 15, ),
+            ("betinha", 16, ),
+        )
+        cursor.executemany(sql, data4)
+        print(sql)
+    connection.commit()
+
+    with connection.cursor() as cursor:
+        sql = (
+            f'SELECT * FROM {TABLE_NAME}'
+            ''
+        )
+        cursor.execute(sql)
+
+        # data5 = cursor.fetchone()
+        data5 = cursor.fetchall()
+        for row in data5:
+            _id, nome, idade = row
+            # print(idade, _id, nome)
+
+    with connection.cursor() as cursor:
+        id_menor = int(input('digite o menor id: '))
+        id_maior = int(input('digite o maior id: '))
+        sql = (
+            f'SELECT * FROM {TABLE_NAME} '
+            'WHERE id BETWEEN %s AND %s '
+        )
+
+        cursor.execute(sql, (id_menor, id_maior))
+        print(cursor.mogrify(sql, (id_menor, id_maior)))
+
+        data6 = cursor.fetchall()
+        for row in data6:
+            print(row)
+
 # cursor.close()
 # connection.close()
