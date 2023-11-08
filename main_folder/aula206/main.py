@@ -2,20 +2,24 @@
 # Doc: https://pymysql.readthedocs.io/en/latest/
 # Pypy: https://pypi.org/project/pymysql/
 # GitHub: https://github.com/PyMySQL/PyMySQL
+from typing import cast
 import pymysql
+import pymysql.cursors
 import dotenv
 import os
 
 dotenv.load_dotenv()
 
 TABLE_NAME = 'customers'
-
+CURRENT_CURSOR = pymysql.cursors.DictCursor
 connection = pymysql.connect(
     host=os.environ['MYSQL_HOST'],
     user=os.environ['MYSQL_USER'],
     password=os.environ['MYSQL_PASSWORD'],
     database=os.environ['MYSQL_DATABASE'],
     charset='utf8mb4',
+    # cursorclass=pymysql.cursors.DictCursor,
+    cursorclass=CURRENT_CURSOR,
 )
 
 with connection:
@@ -129,19 +133,34 @@ with connection:
         #     print(row)
 
     with connection.cursor() as cursor:
+        cursor = cast(CURRENT_CURSOR, cursor)
         sql = (
             f'UPDATE {TABLE_NAME} '
             'SET nome  = %s, idade=%s '
             'WHERE id = %s '
         )
 
-        cursor.execute(sql, ('topzera', 45, 4,))
+        cursor.execute(sql, ('eduado viado', 45, 4,))
         connection.commit()
 
         cursor.execute(f'SELECT * FROM {TABLE_NAME} ')
-        data7 = cursor.fetchall()
+        # data7 = cursor.fetchall()
 
-        for row in data7:
+        # for row in data7:
+        #     _id, name, age = row
+        #     print(_id, name, age)
+
+        print('1 for')
+        # for row in cursor.fetchall_unbuffered(): # grava apenas a linha executada na memoria
+        for row in cursor.fetchall():
             print(row)
+            # print(row['id'])
+        print()
+        print('2 for')
+        cursor.scroll(0, 'absolute') # melhor quando tratando de grandes quantidades de dados
+        for row in cursor.fetchall():
+            print(row)
+            # print(row['id'])
+
 # cursor.close()
 # connection.close()
