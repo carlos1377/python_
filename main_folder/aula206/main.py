@@ -97,19 +97,51 @@ with connection:
             # print(idade, _id, nome)
 
     with connection.cursor() as cursor:
-        id_menor = int(input('digite o menor id: '))
-        id_maior = int(input('digite o maior id: '))
+        # id_menor = int(input('digite o menor id: '))
+        # id_maior = int(input('digite o maior id: '))
+        id_menor = 3
+        id_maior = 6
         sql = (
             f'SELECT * FROM {TABLE_NAME} '
             'WHERE id BETWEEN %s AND %s '
         )
 
         cursor.execute(sql, (id_menor, id_maior))
-        print(cursor.mogrify(sql, (id_menor, id_maior)))
+        # print(cursor.mogrify(sql, (id_menor, id_maior)))
 
-        data6 = cursor.fetchall()
-        for row in data6:
+        # data6 = cursor.fetchall()
+        # for row in data6:
+        #     print(row)
+
+    with connection.cursor() as cursor:
+        sql = (
+            f'DELETE FROM {TABLE_NAME} '
+            'WHERE id = %s '
+        )
+
+        cursor.execute(sql, (1,))
+        connection.commit()
+
+        cursor.execute(f'SELECT * FROM {TABLE_NAME} ')
+        data7 = cursor.fetchall()
+
+        # for row in data7:
+        #     print(row)
+
+    with connection.cursor() as cursor:
+        sql = (
+            f'UPDATE {TABLE_NAME} '
+            'SET nome  = %s, idade=%s '
+            'WHERE id = %s '
+        )
+
+        cursor.execute(sql, ('topzera', 45, 4,))
+        connection.commit()
+
+        cursor.execute(f'SELECT * FROM {TABLE_NAME} ')
+        data7 = cursor.fetchall()
+
+        for row in data7:
             print(row)
-
 # cursor.close()
 # connection.close()
