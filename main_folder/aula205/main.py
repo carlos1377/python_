@@ -65,7 +65,7 @@ if __name__ == '__main__':
         f'DELETE FROM {TABLE_NAME} '
         'WHERE id = 3'
     )
-    
+
     connection.commit()
 
     cursor.execute(
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         'SET name="someone", weight=68.90 '
         'WHERE id = 2'
     )
-    
+
     connection.commit()
 
     cursor.execute(
@@ -83,7 +83,6 @@ if __name__ == '__main__':
     for row in cursor.fetchall():
         _id, name, weight = row
         print(_id, name, weight)
-
 
     cursor.close()
     connection.close()
